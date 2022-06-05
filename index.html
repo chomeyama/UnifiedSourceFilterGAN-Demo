@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta name=”twitter:card” content=”summary“>
+  <meta name=”twitter:site” content=”@_riceham“>
+  <meta property='og:type' content="website">
+  <meta property='og:title' content="Unified Source-Filter GAN Demo">
+  <meta property='og:url' content="https://chomeyama.github.io/Profile/">
+  <meta property='og:description' content="Project demo page. If you have any questions, please contact me by email.">
+  <meta property="og:image" content="img/me2.jpg">
+  <meta name="description" content="Unified Source-Filter GAN Demo">
+  <title>Unified Source-Filter GAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="css/style.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="img/me2.jpg">
+  <link rel=”canonical” href=”https://chomeyama.github.io/Profile/”>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      const hum = $('#hamburger, .close')
+      const nav = $('.sp-nav')
+      hum.on('click', function () {
+        nav.toggleClass('toggle');
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header">
+      <h2><a href="https://chomeyama.github.io/Profile/">Reo YONEYAMA / Home</a></h2>
+      <nav class="pc-nav">
+        <ul id="nav">
+          <li id="nav"><a href="#abstract">Abstract</a></li>
+          <li id="nav"><a href="#demo">Demo</a></li>
+          <li id="nav"><a href="#citation">Citation</a></li>
+        </ul>
+      </nav>
+      <nav class="sp-nav">
+        <ul id="sp-nav">
+          <li id="sp-nav"><a href="#abstract">Abstract</a></li>
+          <li id="sp-nav"><a href="#demo">Demo</a></li>
+          <li id="sp-nav"><a href="#citation">Citation</a></li>
+          <li class="close"><span>Close</span></li>
+        </ul>
+      </nav>
+      <div id="hamburger">
+        <span></span>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <div class="paper_info">
+        <h1>Unified Source-Filter GAN: Unified Source-Filter Network Based On Factorization of
+          Quasi-Periodic Parallel WaveGAN</h1>
+        <h2 style="color: #000050;">Reo Yoneyama, Yi-Chiao Wu, Tomoki Toda</h2>
+        <h2>Nagoya University</h2>
+        <h2 style="margin-top: 10px;">Accepted to <a
+            href="https://www.isca-speech.org/archive/interspeech_2021/yoneyama21_interspeech.html">InterSpeech 2021</a>
+        </h2>
+      </div>
+
+      <h2 class="sectitle">Abstract</h2>
+      <div id="abstract" class="section">
+        <p align="justify"> We propose a unified approach to data-driven source-filter modeling using a single
+          neural network for developing a neural vocoder capable of generating high-quality synthetic speech
+          waveforms while retaining flexibility of the source-filter model to control their voice characteristics.
+          Our proposed network called unified source-filter generative adversarial networks (uSFGAN) is
+          developed by factorizing quasi-periodic parallel WaveGAN (QPPWG), one of the neural vocoders based on a
+          single neural network, into a source excitation generation network and a vocal tract resonance filtering
+          network by additionally implementing a regularization loss. Moreover, inspired by neural source filter
+          (NSF), only a sinusoidal waveform is additionally used as the simplest clue to generate a periodic
+          source excitation waveform while minimizing the effect of approximations in the source filter model. The
+          experimental results demonstrate that uSFGAN outperforms conventional neural vocoders, such as QPPWG and
+          NSF in both speech quality and pitch controllability. </p>
+        <h3 style="text-align: center;">[<a
+            href="https://www.isca-speech.org/archive/interspeech_2021/yoneyama21_interspeech.html">Paper</a>] [<a
+            href="https://arxiv.org/abs/2104.04668">Arxiv</a>] [<a
+            href="https://github.com/chomeyama/UnifiedSourceFilterGAN">Code</a>]</h3>
+      </div>
+
+      <div class="images2">
+        <figure>
+          <img src="img/usfgan.png" alt="uSFGAN" title="uSFGAN">
+          <figcaption>uSFGAN architecture</figcaption>
+        </figure>
+        <figure>
+          <img src="img/usfgan_g.png" alt="uSFGAN generator" title="uSFGAN generator">
+          <figcaption>uSFGAN generator</figcaption>
+        </figure>
+      </div>
+
+      <div class="images1">
+        <figure>
+          <img src="img/MOS.jpg" alt="MOS result" title="MOS result">
+          <figcaption>MOS result</figcaption>
+        </figure>
+      </div>
+
+      <div class="images1">
+        <figure>
+          <img src="img/ABX.jpg" alt="ABX test result" title="ABX test result">
+          <figcaption>ABX test result</figcaption>
+        </figure>
+      </div>
+
+      <div class=" images1">
+        <figure>
+          <img src="img/wave_spec.jpg" alt="Plot of waveform and spectrogram" title="Plot of waveform and spectrogram"
+            style="max-width: 70%;">
+          <figcaption>Comparison of uSFGAN w/ and w/o the regularization loss (waveform and spectrogram of output
+            source
+            excitation signals)</figcaption>
+        </figure>
+      </div>
+
+      <h2 class="sectitle">Demo</h2>
+      <div id="demo" class="section">
+
+        <p>Comparison with baselines on CMU-ARCTIC [1] corpus. The baseline models are WORLD [2], NSF [3] and QP-PWG
+          [4].</p>
+        <br>
+
+        <div class="selects">
+          <label for="utt_id">Utterance ID</label>
+          <div class="simple_select">
+            <select required id="utt_id" name="utt_id">
+              <option value="bdl_arctic_b0474" selected>bdl_arctic_b0474</option>
+              <option value="clb_arctic_b0475">clb_arctic_b0475</option>
+            </select>
+          </div>
+
+          <label for="f0_scale">F0 scale</label>
+          <div class="simple_select">
+            <select required id="f0_factor" name="f0_scale">
+              <option value="1.00" selected>1.00</option>
+              <option value='0.50'>0.50</option>
+              <option value='2.00'>2.00</option>
+            </select>
+          </div>
+
+          <div class="button">
+            <input type="button" value="OK" onclick="clickBtn()">
+          </div>
+        </div>
+
+        <script>
+          function clickBtn() {
+            var utt_id = document.getElementById('utt_id');
+            var f0_factor = document.getElementById('f0_factor');
+            utt_id.options[utt_id.selectedIndex].selected = true;
+            f0_factor.options[f0_factor.selectedIndex].selected = true;
+            document.getElementById("natural").src = "audio/" + "natural" + "/" + utt_id.value + "_f1.00.wav";
+            const methods = ["world", "nsf", "qppwg", "usfgan", "usfgan_src", "usfgan_no_reg", "usfgan_no_reg_src"];
+            for (const m of methods) {
+              document.getElementById(m).src = "audio/" + m + "/" + utt_id.value + "_f" + f0_factor.value + ".wav";
+            }
+          }
+        </script>
+
+        <table class="audio_table">
+          <thead>
+            <tr>
+              <th style="text-align: left">Model</th>
+              <th style="text-align: center">Speech</th>
+              <th style="text-align: center">Excitation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left">Natural</td>
+              <td style="text-align: center"><audio id="natural" src="audio/natural/bdl_arctic_b0474_f1.00.wav"
+                  controls="" preload=""></audio>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">WORLD</td>
+              <td style="text-align: center"><audio id="world" src="audio/world/bdl_arctic_b0474_f1.00.wav" controls=""
+                  preload=""></audio>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">NSF</td>
+              <td style="text-align: center"><audio id="nsf" src="audio/nsf/bdl_arctic_b0474_f1.00.wav" controls=""
+                  preload=""></audio>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">QP-PWG</td>
+              <td style="text-align: center"><audio id="qppwg" src="audio/qppwg/bdl_arctic_b0474_f1.00.wav" controls=""
+                  preload=""></audio>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">uSFGAN</td>
+              <td style="text-align: center"><audio id="usfgan" src="audio/usfgan/bdl_arctic_b0474_f1.00.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_src" src="audio/usfgan/bdl_arctic_b0474_f1.00.wav"
+                  controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">uSFGAN w/o regularization loss</td>
+              <td style="text-align: center"><audio id="usfgan_no_reg"
+                  src="audio/usfgan_no_reg/bdl_arctic_b0474_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_no_reg_src"
+                  src="audio/usfgan_no_reg/bdl_arctic_b0474_f1.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="sectitle">Citation</h2>
+      <div id="citation" class="section">
+        <p>@inproceedings{yoneyama21_interspeech,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;author={Reo Yoneyama and Yi-Chiao Wu and Tomoki Toda},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;title={{Unified Source-Filter GAN: Unified Source-Filter Network Based On
+          Factorization of Quasi-Periodic Parallel WaveGAN}},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;year=2021,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;booktitle={Proc. Interspeech 2021},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;pages={2187--2191},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;doi={10.21437/Interspeech.2021-517}<br>
+          }</p>
+      </div>
+
+      <h2 class="sectitle">References</h2>
+      <div id="references" class="section">
+        <p>[1] J. Kominek and A. W. Black, “The CMU ARCTIC speech
+          databases for speech synthesis research,” in Tech. Rep. CMU-LTI03-177, 2003.</p>
+        <p>[2] M. Morise, F. Yokomori, and K. Ozawa, “WORLD: a vocoderbased high-quality speech synthesis system for
+          real-time applications,” IEICE Transactions on Information and Systems, vol. 99,
+          no. 7, pp. 1877–1884, 2016.</p>
+        <p>[3] X. Wang, S. Takaki, and J. Yamagishi, “Neural source-filter
+          waveform models for statistical parametric speech synthesis,”
+          IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 28, pp. 402–415, 2020.</p>
+        <p>[4] Y.-C. Wu, T. Hayashi, T. Okamoto, H. Kawai, and T. Toda,
+          “Quasi-periodic parallel wavegan: A non-autoregressive raw
+          waveform generative model with pitch-dependent dilated convolution neural network,” IEEE/ACM Transactions on
+          Audio,
+          Speech, and Language Processing, vol. 29, pp. 792–806, 2021.</p>
+      </div>
+
+    </div>
+
+    <div class="page-top" id="js-page-top">
+      <span class="material-icons-outlined">expand_less</span>
+    </div>
+
+    <footer>
+      <a class="copyright">Copyright&copy;2021.</a>
+      <a href="https://github.com/chomeyama/" target="_blank">
+        <img class="icon" src="img/github_icon.png" alt="GitHub icon">
+      </a>
+      <a href="https://twitter.com/_riceham/" target="_blank">
+        <img class="icon" src="img/twitter_icon.png" alt="Twitter icon">
+      </a>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type='text/javascript' src="js/script.js"></script>
+</body>
+
+</html>
